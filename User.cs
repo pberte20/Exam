@@ -1,18 +1,34 @@
 namespace Exam
 {
     using System;
-       class bruger
+       class User:IComparable<User>
     {
 
-        public bruger(string firstname, string lastname, string email, int id)
+        public int CompareTo(User other)
+        {
+            if (this.Id > other.Id)
+            {
+                return 1;
+            }
+            else if (this.Id < other.Id)
+            {
+                return -1;
+            }
+            else
+            {
+                return 0;
+            }
+        }
+        public User(string firstname, string lastname, string email)
         {
             this.FirstName = firstname;
             this.lastName = lastname;
             this.Email = email;
-            this.id = id;
+            this.Id = IdCounter++;
             
         }
-        int id;
+        private int Id;
+        private static int IdCounter = 0;
 
         public string FirstName
         {
@@ -20,7 +36,7 @@ namespace Exam
             set {
                 if(value == null )
                 {
-                    throw new System.NullReferenceException();
+                    throw new ArgumentNullException("First name cannot be null");
                 }
                 else
                 {
@@ -33,9 +49,9 @@ namespace Exam
             get { return lastName; }
             set 
             {
-                if(value == null || value == "")
+                if(value == null )
                 {
-                    throw new System.NullReferenceException();
+                    throw new ArgumentNullException("Last name cannot be null");
                 }
                 else
                 {
@@ -45,11 +61,12 @@ namespace Exam
         }
 
         private string lastName;
-        string UserName;
+        public string UserName{get;set;}
 
         string Email;
-        public int Balance
+        public decimal Balance
         {
+            //TODO implement negative balance check
             get { return balance; }
             set { 
                 if (balance - value <50)
@@ -59,10 +76,15 @@ namespace Exam
                 balance = value; 
                 }
         }
-        private int balance;
+        private decimal balance;
+        //TODO implement delegate
+        public delegate string UserBalanceNotification(User user, decimal balance);
+    
         public override string ToString()
         {
             return $"{FirstName} {LastName} {Email} ";
         }
     }
+
+   
 }
