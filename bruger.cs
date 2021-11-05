@@ -1,5 +1,6 @@
 namespace Exam
 {
+    using System;
        class bruger
     {
 
@@ -17,9 +18,9 @@ namespace Exam
         {
             get { return firstName; }
             set {
-                if(value == null || value == "")
+                if(value == null )
                 {
-                    throw new System.Exception("First name is empty");
+                    throw new System.NullReferenceException();
                 }
                 else
                 {
@@ -28,11 +29,40 @@ namespace Exam
             }
         }
         private string firstName;
-        string lastName;
+        public string LastName{
+            get { return lastName; }
+            set 
+            {
+                if(value == null || value == "")
+                {
+                    throw new System.NullReferenceException();
+                }
+                else
+                {
+                    lastName = value;
+                }
+            }
+        }
+
+        private string lastName;
         string UserName;
 
         string Email;
-
-        int Balance;
+        public int Balance
+        {
+            get { return balance; }
+            set { 
+                if (balance - value <50)
+                {
+                    Console.WriteLine("Balance is now less than 50");
+                }
+                balance = value; 
+                }
+        }
+        private int balance;
+        public override string ToString()
+        {
+            return $"{FirstName} {LastName} {Email} ";
+        }
     }
 }

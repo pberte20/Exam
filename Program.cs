@@ -7,7 +7,7 @@ using System;
         static void Main(string[] args)
         {
             bruger bruger = new bruger("Epic","hans","sej@epic.com",5);
-            Console.WriteLine(bruger.FirstName);
+            Console.WriteLine(bruger.ToString());
         }
     }
 }
