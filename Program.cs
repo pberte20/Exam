@@ -1,12 +1,13 @@
-﻿using System;
-
-namespace Exam
+﻿namespace Exam
 {
+using System;
+
     class Program
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            bruger bruger = new bruger("Epic","hans","sej@epic.com",5);
+            Console.WriteLine(bruger.FirstName);
         }
     }
 }
