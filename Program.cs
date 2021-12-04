@@ -17,8 +17,8 @@
         public static List<User> GetUsers()
         {
             List<User> users = new List<User>();
-            users.Add(new User("Patrick", "Bertelsen", "Patrick@gmail.com"));
-            users.Add(new User ("Simon", "prooonk","uglenxd@gmail.com"));
+            users.Add(new User("Patrick", "Bertelsen", "grisenz2_", "Patrick@gmail.com"));
+            users.Add(new User ("Simon", "prooonk", "gamer", "uglenxd@gmail.com"));
             return users;
         }
         public static void PrintUsers(List<User> users)
