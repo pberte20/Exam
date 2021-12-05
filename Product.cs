@@ -1,6 +1,6 @@
 namespace Exam
 {
-    class Product
+    public class Product
     {
         public Product(string name, decimal price, bool canBeBoughtOnCredit)
         {

@@ -102,17 +102,13 @@ namespace Exam
             //TODO implement negative balance check
             get { return balance; }
             set { 
-                if (balance - value <50)
+                if (value >= 0)
                 {
-                    Console.WriteLine("Balance is now less than 50");
+                    AddBalance(value);
                 }
-                if (balance - value < 0)
+                else if (value < 0)
                 {
-                    throw new ArgumentException("Balance cannot be negative");
-                }
-                else
-                {
-                    balance = value;
+                    SubtractBalance(value);
                 }
             }
         }
@@ -134,6 +130,22 @@ namespace Exam
         public override int GetHashCode()
         {
             return Id.GetHashCode();
+        }
+
+        private void AddBalance(decimal amount)
+        {
+            this.balance += amount;
+        }
+        private void SubtractBalance(decimal amount)
+        {
+            if (amount > this.balance)
+            {
+                throw new ArgumentException("Cannot withdraw more than balance");
+            }
+            else
+            {
+                this.balance -= amount;
+            }
         }
     }
 

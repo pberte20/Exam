@@ -14,6 +14,9 @@
             PrintProducts(products);
             Transaction transaction  = new InsertCashTransaction(100,users[0]);
             Console.WriteLine(transaction.ToString()); 
+            Console.WriteLine(users[0].Balance);
+            transaction.Execute();
+            Console.WriteLine(users[0].Balance);
          }
 
         public static List<User> GetUsers()
