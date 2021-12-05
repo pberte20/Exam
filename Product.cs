@@ -11,15 +11,15 @@ namespace Exam
             this.IsActive = true;
             this.Id = IdCounter++;
         }
-        public int Id{ get; }
-        private static int IdCounter = 1;
+        public int Id{ get; set; }
+        protected static int IdCounter = 1;
         public string Name{ get; set;}
-        private string name;
+        protected string name;
         public decimal Price{ get; set;}
-        private decimal price;
+        protected decimal price;
         public bool IsActive{ get; set;}
         public bool CanbeBoughtOnCredit{ get; set;}
-        private bool canBeBoughtOnCredit;
+        protected bool canBeBoughtOnCredit;
 
         public  override string ToString()
         {
