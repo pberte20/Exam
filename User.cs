@@ -1,6 +1,7 @@
 namespace Exam
 {
     using System;
+    using System.Collections.Generic;
     using System.Text.RegularExpressions;
        class User:IComparable<User>
     {
@@ -122,6 +123,17 @@ namespace Exam
         public override string ToString()
         {
             return $"{FirstName} {LastName} {Email} ";
+        }
+
+        public override bool Equals(object obj)
+        {
+            return obj is User user &&
+                   Id == user.Id;
+        }
+
+        public override int GetHashCode()
+        {
+            return Id.GetHashCode();
         }
     }
 
