@@ -17,6 +17,10 @@
             Console.WriteLine(users[0].Balance);
             transaction.Execute();
             Console.WriteLine(users[0].Balance);
+            Transaction transaction2 = new BuyProductTransaction(products[0],users[0], products[0].Price);
+            transaction2.Execute();
+            Console.WriteLine(transaction2.ToString());
+            Console.WriteLine(users[0].Balance);
          }
 
         public static List<User> GetUsers()

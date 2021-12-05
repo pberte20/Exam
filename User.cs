@@ -99,15 +99,17 @@ namespace Exam
         private Regex EmailRegex = new Regex(@"^[a-zA-Z0-9'_''-''.'',']+@[a-zA-Z0-9]+\.+[a-zA-Z0-9]+$");
         public decimal Balance
         {
-            //TODO implement negative balance check
+            //EKSTREMTTTT SCUFFED
             get { return balance; }
             set { 
                 if (value >= 0)
                 {
+                    Console.WriteLine("tilføjer" + value);
                     AddBalance(value);
                 }
                 else if (value < 0)
                 {
+                    Console.WriteLine("fjerner" + value);
                     SubtractBalance(value);
                 }
             }
@@ -144,7 +146,7 @@ namespace Exam
             }
             else
             {
-                this.balance -= amount;
+                this.balance += amount;
             }
         }
     }

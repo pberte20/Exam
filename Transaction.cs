@@ -21,11 +21,7 @@ namespace Exam
                     return this.amount;}
                 set
                 {
-                        if (value < 0)
-                        {
-                            throw new ArgumentException("Amount cannot be negative");
-                        }
-                        else if (value == 0)
+                        if (value == 0)
                         {
                             throw new ArgumentException("Amount cannot be zero");
                         }
