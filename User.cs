@@ -3,7 +3,7 @@ namespace Exam
     using System;
     using System.Collections.Generic;
     using System.Text.RegularExpressions;
-       class User:IComparable<User>
+       public class User:IComparable<User>
     {
 
         public int CompareTo(User other)

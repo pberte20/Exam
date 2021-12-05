@@ -12,7 +12,7 @@
             users.Sort();
             PrintUsers(users);
             PrintProducts(products);
-            Transaction transaction  = new Transaction(100,users[0]);
+            Transaction transaction  = new InsertCashTransaction(100,users[0]);
             Console.WriteLine(transaction.ToString()); 
          }
 

@@ -1,7 +1,7 @@
 namespace Exam
 {  
     using System;
-    class Transaction
+    public abstract class Transaction
         {
         public Transaction(decimal amount, User user)
             {
@@ -10,6 +10,8 @@ namespace Exam
                 this.Amount = amount;
                 this.Date = DateTime.Now;
             }
+
+            public abstract void Execute();
     
             public int Id { get; set; }
             protected static int IdCounter = 1;
