@@ -12,14 +12,17 @@ namespace Exam
             }
         public override void Execute()
         {
-            try
+            if (this.User.Balance < this.Amount && this.Product.CanbeBoughtOnCredit == false)
             {
-                 User.Balance =- Amount;
+                throw new InsufficientCreditsException(Product, User);
             }
-            catch (System.Exception)
+            else if (!Product.IsActive)
             {
-                
-                throw new System.Exception("Not enough money");
+                throw new ProductNotActiveException(Product);
+            }
+            else
+            {
+                this.User.Balance -= this.Amount;
             }
         }
 
@@ -28,5 +31,6 @@ namespace Exam
             return $"{this.Product.Name} {this.Amount} {this.Date}";
         }
         public Product Product { get; set; }
+
     }
 }

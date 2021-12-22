@@ -12,7 +12,7 @@
             users.Sort();
             PrintUsers(users);
             PrintProducts(products);
-            Transaction transaction  = new InsertCashTransaction(100,users[0]);
+            Transaction transaction  = new InsertCashTransaction(15,users[0]);
             Console.WriteLine(transaction.ToString()); 
             Console.WriteLine(users[0].Balance);
             transaction.Execute();
@@ -26,7 +26,7 @@
         public static List<User> GetUsers()
         {
             List<User> users = new List<User>();
-            users.Add(new User("Patrick", "Bertelsen", "grisenz2_", "Patrick@gmail.com"));
+            users.Add(new User("Patrick", "Bertelsen", "grisenz", "Patrick@gmail.com"));
             users.Add(new User ("Simon", "prooonk", "gamer", "uglenxd@gmail.com"));
             return users;
         }

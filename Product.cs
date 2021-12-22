@@ -21,9 +21,9 @@ namespace Exam
         public bool CanbeBoughtOnCredit{ get; set;}
         protected bool canBeBoughtOnCredit;
 
-        public  override string ToString()
+        public override string ToString()
         {
-            return $"{Id} {Name} {Price}";
+            return $"ID:{Id} NAME:{Name} PRICE:{Price}";
         }
 
     }

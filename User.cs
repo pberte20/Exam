@@ -101,17 +101,9 @@ namespace Exam
         {
             //EKSTREMTTTT SCUFFED
             get { return balance; }
-            set { 
-                if (value >= 0)
-                {
-                    Console.WriteLine("tilføjer" + value);
-                    AddBalance(value);
-                }
-                else if (value < 0)
-                {
-                    Console.WriteLine("fjerner" + value);
-                    SubtractBalance(value);
-                }
+            set 
+            { 
+                balance = value;
             }
         }
         private decimal balance;
@@ -134,21 +126,6 @@ namespace Exam
             return Id.GetHashCode();
         }
 
-        private void AddBalance(decimal amount)
-        {
-            this.balance += amount;
-        }
-        private void SubtractBalance(decimal amount)
-        {
-            if (amount > this.balance)
-            {
-                throw new ArgumentException("Cannot withdraw more than balance");
-            }
-            else
-            {
-                this.balance += amount;
-            }
-        }
     }
 
    
