@@ -6,6 +6,7 @@ namespace Exam
        public class User:IComparable<User>
     {
 
+        public event EventHandler<EventArgs> UserBalanceBelowTreshold;
         public int CompareTo(User other)
         {
             if (this.Id > other.Id)
@@ -30,6 +31,7 @@ namespace Exam
             this.Id = IdCounter++;
             
         }
+        private static int balanceTreshold = 50;
         private int Id;
         private static int IdCounter = 0;
 
@@ -99,11 +101,14 @@ namespace Exam
         private Regex EmailRegex = new Regex(@"^[a-zA-Z0-9'_''-''.'',']+@[a-zA-Z0-9]+\.+[a-zA-Z0-9]+$");
         public decimal Balance
         {
-            //EKSTREMTTTT SCUFFED
             get { return balance; }
             set 
             { 
                 balance = value;
+                if (balance < balanceTreshold)
+                {
+                    OnUserBalanceBelowTreshold(EventArgs.Empty);
+                }
             }
         }
         private decimal balance;
@@ -124,6 +129,10 @@ namespace Exam
         public override int GetHashCode()
         {
             return Id.GetHashCode();
+        }
+        protected virtual void OnUserBalanceBelowTreshold(EventArgs e)
+        {
+            UserBalanceBelowTreshold?.Invoke(this, e);
         }
 
     }

@@ -21,6 +21,10 @@
             transaction2.Execute();
             Console.WriteLine(transaction2.ToString());
             Console.WriteLine(users[0].Balance);
+            StregSystem stregSystem = new StregSystem(users, products, new List<Transaction>());
+            stregSystem.InsertCash(15, users[0]);
+            Console.WriteLine(users[0].Balance);
+            Console.WriteLine(stregSystem.GetUserByUserName("grisenz"));
          }
 
         public static List<User> GetUsers()
