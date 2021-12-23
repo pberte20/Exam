@@ -48,10 +48,20 @@ namespace Exam
         {
             Console.WriteLine($"Product {product.Name} not found");
         }
+        private void DisplayProducts()
+        {
+            Console.WriteLine("Products:");
+            foreach (Product product in _stregSystem.ActiveProducts)
+            {
+                Console.WriteLine(product.ToString());
+            }
+        }
         public void Start()
         {
             while (_running)
-            {
+            {   
+                Console.Clear();
+                DisplayProducts();
                 Console.WriteLine("Enter command:");
                 string command = Console.ReadLine();
                 CommandEntered?.Invoke(this, command);

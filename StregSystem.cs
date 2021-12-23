@@ -9,6 +9,13 @@ namespace Exam
         private List<Transaction> _transactions;
         private List<Product> _products;
         private List<User> _users;
+        public IEnumerable<Product> ActiveProducts
+        {
+            get
+            {
+                return _products.Where(p => p.IsActive).ToList();
+            }
+        }
         public event EventHandler<User> UserBalanceBelowTreshold;
 
         public StregSystem(List<User> users, List<Product> products)
