@@ -27,11 +27,8 @@
             IEnumerable<Product> ActiveProducts = stregSystem.GetActiveProducts();
             StregSystemCLI stregSystemCLI = new StregSystemCLI(stregSystem);
             Console.Clear();
+            StregSystemController controller = new StregSystemController(stregSystemCLI, stregSystem);
             stregSystemCLI.Start();
-            foreach (Product product in ActiveProducts)
-            {
-                Console.WriteLine(product.Name);
-            }
          }
 
         public static List<User> GetUsers()

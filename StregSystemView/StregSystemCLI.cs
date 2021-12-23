@@ -6,7 +6,6 @@ namespace Exam
         public event EventHandler<string> CommandEntered;
         private bool _running = true;
         private StregSystem _stregSystem;
-
         public StregSystemCLI(StregSystem stregSystem)
         {
             _stregSystem = stregSystem;
@@ -60,7 +59,6 @@ namespace Exam
         {
             while (_running)
             {   
-                Console.Clear();
                 DisplayProducts();
                 Console.WriteLine("Enter command:");
                 string command = Console.ReadLine();
