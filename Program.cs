@@ -21,10 +21,17 @@
             transaction2.Execute();
             Console.WriteLine(transaction2.ToString());
             Console.WriteLine(users[0].Balance);
-            StregSystem stregSystem = new StregSystem(users, products, new List<Transaction>());
+            StregSystem stregSystem = new StregSystem(users, products);
             stregSystem.InsertCash(15, users[0]);
             Console.WriteLine(users[0].Balance);
-            Console.WriteLine(stregSystem.GetUserByUserName("grisenz"));
+            IEnumerable<Product> ActiveProducts = stregSystem.GetActiveProducts();
+            StregSystemCLI stregSystemCLI = new StregSystemCLI(stregSystem);
+            Console.Clear();
+            stregSystemCLI.Start();
+            foreach (Product product in ActiveProducts)
+            {
+                Console.WriteLine(product.Name);
+            }
          }
 
         public static List<User> GetUsers()

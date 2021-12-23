@@ -11,11 +11,15 @@ namespace Exam
         private List<User> _users;
         public event EventHandler<User> UserBalanceBelowTreshold;
 
-        public StregSystem(List<User> users, List<Product> products, List<Transaction> transactions)
+        public StregSystem(List<User> users, List<Product> products)
         {
-            this._transactions = new List<Transaction>();
-            this._products = new List<Product>();
-            this._users = new List<User>();
+            _products = products;
+            _users = users;
+            _transactions = new List<Transaction>();
+            foreach (User user in users)
+            {
+                user.UserBalanceBelowTreshold += OnUserBalanceBelowTreshold;
+            }
         }
         
         public BuyProductTransaction BuyProduct(Product product, User user, decimal amount)
@@ -56,7 +60,7 @@ namespace Exam
 
         public User GetUserByUserName(string userName)
         {
-            User user = _users.Where(u => u.UserName == userName).FirstOrDefault();
+            User user = _users.Where(u => userName == u.UserName).FirstOrDefault();
             if (user != null)
             {
                 return user;
