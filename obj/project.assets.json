@@ -8,28 +8,23 @@
     "net5.0": []
   },
   "packageFolders": {
-    "C:\\Users\\Patrick\\.nuget\\packages\\": {}
+    "C:\\Users\\pater\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Patrick\\Documents\\GitHub\\Exam\\Exam.csproj",
+      "projectUniqueName": "D:\\clion projects\\Github\\Exam\\Exam.csproj",
       "projectName": "Exam",
-      "projectPath": "C:\\Users\\Patrick\\Documents\\GitHub\\Exam\\Exam.csproj",
-      "packagesPath": "C:\\Users\\Patrick\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Patrick\\Documents\\GitHub\\Exam\\obj\\",
+      "projectPath": "D:\\clion projects\\Github\\Exam\\Exam.csproj",
+      "packagesPath": "C:\\Users\\pater\\.nuget\\packages\\",
+      "outputPath": "D:\\clion projects\\Github\\Exam\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Patrick\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "C:\\Users\\pater\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net5.0"
       ],
-      "sources": {
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "https://api.nuget.org/v3/index.json": {}
-      },
       "frameworks": {
         "net5.0": {
           "targetAlias": "net5.0",
@@ -60,7 +55,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.400\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.403\\RuntimeIdentifierGraph.json"
       }
     }
   }
