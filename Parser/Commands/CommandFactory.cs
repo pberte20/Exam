@@ -1,5 +1,6 @@
 namespace Exam
 {
+    using System;
     using System.Collections.Generic;
     using System.Linq;
     public class CommandFactory
@@ -18,8 +19,19 @@ namespace Exam
             string FirstCommand = commandParts.First();
             switch (FirstCommand)
             {
+               case ":q" or ":quit":
+                return new QuitCommand(_ui);
+
+                default:
+                return parseUserCommand(commandParts);
             }
-            return null;
+            
+        }
+        private ICommand parseUserCommand(IEnumerable<string> commandParts)
+        {
+            string FirstCommand = commandParts.First();
+           
+
         }
     }
 }
