@@ -16,6 +16,7 @@ namespace Exam
             try
             {
                 _stregSystem.ChangeActiveStatus(_product, false);
+                _ui.DisplayProductIsActive(_product);
             }
             catch (ProductNotActiveException e)
             {

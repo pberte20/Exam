@@ -8,7 +8,7 @@ namespace Exam
             _ui = ui;
         }
         public void Execute()
-        {
+        { 
             _ui.Close();
         }
     }

@@ -47,6 +47,17 @@ namespace Exam
         {
             Console.WriteLine($"Product {product.Name} not found");
         }
+        public void DisplayProductIsActive(Product product)
+        {
+            if (product.IsActive)
+            {
+                Console.WriteLine($"Product {product.Name} is active");
+            }
+            else
+            {
+                Console.WriteLine($"Product {product.Name} is not active");
+            }
+        }
         private void DisplayProducts()
         {
             Console.WriteLine("Products:");

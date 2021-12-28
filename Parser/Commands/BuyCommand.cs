@@ -30,7 +30,9 @@ namespace Exam
         {
             try
             {
-                _stregSystem.BuyProduct(_product, _user, _amount);
+                BuyProductTransaction transaction = _stregSystem.BuyProduct(_product, _user, _amount);
+                _ui.DisplayUserBuysProduct(transaction);
+                Console.ReadLine();
             }
             catch (Exception e)
             {

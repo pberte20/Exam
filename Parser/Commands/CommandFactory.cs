@@ -9,9 +9,16 @@ namespace Exam
         {
             _ui = ui;
             _stregSystem = stregSystem;
+            _adminCommands.Add("quit", _ui.Close);
         }
         private IStregSystemUI _ui;
         private StregSystem _stregSystem;
+        private Dictionary<string, Action> _adminCommands = new Dictionary<string, Action>();
+        private void GetDictionaryCommands()
+        {
+            _adminCommands.Add("quit", _ui.Close);
+          //  _adminCommands.Add("Activate",(_product) => _stregSystem.ChangeActiveStatus(_product, true));
+        }
 
         public ICommand Parse(string command)
         {

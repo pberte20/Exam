@@ -22,7 +22,7 @@ namespace Exam
 
         public override string ToString()
         {
-            return $"ID:{Id} NAME:{Name} PRICE:{Price}";
+            return $"ID:{Id} NAME:{Name} PRICE:{Price} CANBEBOUGHTONCREDIT:{CanbeBoughtOnCredit}";
         }
 
     }
