@@ -99,7 +99,7 @@ namespace Exam
             }
         }
         private string email;
-        private Regex EmailRegex = new Regex(@"^[a-zA-Z0-9'_''-''.'',']+@[a-zA-Z0-9]+\.+[a-zA-Z0-9]+$");
+        private Regex EmailRegex = new Regex(@"^[a-zA-Z0-9'_''-''.'',']+@[a-zA-Z0-9'.']+\.+[a-zA-Z0-9]+$");
         public decimal Balance
         {
             get { return balance; }

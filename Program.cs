@@ -10,27 +10,16 @@
         static void Main(string[] args)
         {
             IDataLoader<User> userLoader = new UserLoader();
-            Console.WriteLine(Directory.GetCurrentDirectory());
+            IDataLoader<Product> productLoader = new ProductLoader();
+            string DirectoryLocation = Directory.GetCurrentDirectory();
             List<User> users = 
-                userLoader.LoadData(File.ReadLines(@"../../Data/products.csv").Skip(1));
+                userLoader.LoadData(File.ReadLines(Path.Combine(DirectoryLocation,@"Data\users.csv" )).Skip(1));
         
                 
-            List<Product> products = GetProducts();
+            List<Product> products = 
+                productLoader.LoadData(File.ReadLines(Path.Combine(DirectoryLocation,@"Data\products.csv" )).Skip(1));
             users.Sort();
-            PrintUsers(users);
-            PrintProducts(products);
-            Transaction transaction  = new InsertCashTransaction(15,users[0]);
-            Console.WriteLine(transaction.ToString()); 
-            Console.WriteLine(users[0].Balance);
-            transaction.Execute();
-            Console.WriteLine(users[0].Balance);
-            Transaction transaction2 = new BuyProductTransaction(products[0],users[0], products[0].Price);
-            transaction2.Execute();
-            Console.WriteLine(transaction2.ToString());
-            Console.WriteLine(users[0].Balance);
             StregSystem stregSystem = new StregSystem(users, products);
-            stregSystem.InsertCash(15, users[0]);
-            Console.WriteLine(users[0].Balance);
             IEnumerable<Product> ActiveProducts = stregSystem.GetActiveProducts();
             StregSystemCLI stregSystemCLI = new StregSystemCLI(stregSystem);
             Console.Clear();
@@ -62,17 +51,17 @@
                 Console.WriteLine(product.ToString());
             }
         }
-        public static List<Product> GetProducts()
-        {
-            List<Product> products = new List<Product>();
-            products.Add(new Product("Cola",10,false, true));
-            products.Add(new Product("Fanta", 10, false, true));
-            products.Add(new Product("Sprite", 10, false, true));
-            products.Add(new Product("Coffee", 5, false, true));
-            products.Add(new Product("Party Ticket", 200, true, true));
-            return products;
+        // public static List<Product> GetProducts()
+        // {
+        //     List<Product> products = new List<Product>();
+        //     products.Add(new Product("Cola",10,false, true));
+        //     products.Add(new Product("Fanta", 10, false, true));
+        //     products.Add(new Product("Sprite", 10, false, true));
+        //     products.Add(new Product("Coffee", 5, false, true));
+        //     products.Add(new Product("Party Ticket", 200, true, true));
+        //     return products;
 
-        }
+        // }
 
 
     

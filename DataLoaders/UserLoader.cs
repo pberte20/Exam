@@ -9,7 +9,7 @@ namespace Exam
             List<User> users = new List<User>();
             foreach (string line in lines)
             {
-                string[] parts = line.Split(';');
+                string[] parts = line.Split(',');
                 string FirstNameString = parts[1];
                 string LastNameString = parts[2];
                 string UserNameString = parts[3];

@@ -2,11 +2,11 @@ namespace Exam
 {
     public class Product
     {
-        public Product(string name, decimal price, bool canBeBoughtOnCredit, bool isActive)
+        public Product(string name, decimal price, bool isActive)
         {
             this.Name = name;
             this.Price = price;
-            this.CanbeBoughtOnCredit = canBeBoughtOnCredit;
+            this.CanbeBoughtOnCredit = false;
             this.IsActive = isActive;
             this.Id = IdCounter++;
         }
