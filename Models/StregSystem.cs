@@ -91,5 +91,9 @@ namespace Exam
             transaction.Execute();
             _transactions.Add(transaction);
         }
+        public void ChangeActiveStatus(Product product, bool isActive)
+        {
+            product.IsActive = isActive;
+        }
     }
 }

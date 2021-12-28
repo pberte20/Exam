@@ -2,12 +2,19 @@
 {
     using System;
     using System.Collections.Generic;
+    using System.IO;
+    using System.Linq;
 
     class Program
     {
         static void Main(string[] args)
         {
-            List<User> users = GetUsers();
+            IDataLoader<User> userLoader = new UserLoader();
+            Console.WriteLine(Directory.GetCurrentDirectory());
+            List<User> users = 
+                userLoader.LoadData(File.ReadLines(@"../../Data/products.csv").Skip(1));
+        
+                
             List<Product> products = GetProducts();
             users.Sort();
             PrintUsers(users);
@@ -34,8 +41,8 @@
         public static List<User> GetUsers()
         {
             List<User> users = new List<User>();
-            users.Add(new User("Patrick", "Bertelsen", "grisenz", "Patrick@gmail.com"));
-            users.Add(new User ("Simon", "prooonk", "gamer", "uglenxd@gmail.com"));
+            users.Add(new User("Patrick", "Bertelsen", "grisenz", "Patrick@gmail.com", 50));
+            users.Add(new User ("Simon", "prooonk", "gamer", "uglenxd@gmail.com", 50));
             return users;
         }
         public static void PrintUsers(List<User> users)
@@ -58,11 +65,11 @@
         public static List<Product> GetProducts()
         {
             List<Product> products = new List<Product>();
-            products.Add(new Product("Cola",10,false));
-            products.Add(new Product("Fanta", 10, false));
-            products.Add(new Product("Sprite", 10, false));
-            products.Add(new Product("Coffee", 5, false));
-            products.Add(new Product("Party Ticket", 200, true));
+            products.Add(new Product("Cola",10,false, true));
+            products.Add(new Product("Fanta", 10, false, true));
+            products.Add(new Product("Sprite", 10, false, true));
+            products.Add(new Product("Coffee", 5, false, true));
+            products.Add(new Product("Party Ticket", 200, true, true));
             return products;
 
         }

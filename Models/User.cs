@@ -22,13 +22,14 @@ namespace Exam
                 return 0;
             }
         }
-        public User(string firstname, string lastname, string userName, string email)
+        public User(string firstname, string lastname, string userName, string email, decimal balance)
         {
             this.FirstName = firstname;
             this.lastName = lastname;
             this.Email = email;
             this.UserName = userName;
             this.Id = IdCounter++;
+            this.Balance = balance;
             
         }
         private static int balanceTreshold = 50;

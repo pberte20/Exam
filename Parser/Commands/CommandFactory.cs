@@ -20,11 +20,15 @@ namespace Exam
             IList<string> Arguments = commandParts.Skip(1).ToList();
             switch (FirstCommand)
             {
-               case ":q" or ":quit":
-                return new QuitCommand(_ui);
-
+                case ":q" or ":quit":
+                    return new QuitCommand(_ui);
+                case ":activate":
+                    return  ParseActivateCommand(Arguments);
+                case ":deactivate":
+                    return ParseDeactivateCommand(Arguments);
                 default:
-                return parseUserCommand(FirstCommand, Arguments);
+                    return parseUserCommand(FirstCommand, Arguments);
+                
             }
             
         }
@@ -47,8 +51,33 @@ namespace Exam
                 {
                     throw new ArgumentException("Invalid number of arguments");
                 }
-           
 
+        }
+        private ICommand ParseActivateCommand(IList<string> Arguments)
+        {
+            if (Arguments.Count() == 1)
+            {
+                int id = int.Parse(Arguments[0]);
+                Product product = _stregSystem.GetProductById(id);
+                return new ActivateCommand(_ui, _stregSystem, product);
+            }
+            else
+            {
+                throw new ArgumentException("Invalid number of arguments");
+            }
+        }
+        private ICommand ParseDeactivateCommand(IList<string> Arguments)
+        {
+            if (Arguments.Count() == 1)
+            {
+                int id = int.Parse(Arguments[0]);
+                Product product = _stregSystem.GetProductById(id);
+                return new DeactivateCommand(_ui, _stregSystem, product);
+            }
+            else
+            {
+                throw new ArgumentException("Invalid number of arguments");
+            }
         }
     }
 }

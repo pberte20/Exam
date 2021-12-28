@@ -15,10 +15,9 @@ namespace Exam
             { 
                 User.Balance += Amount;
             }
-            catch (System.Exception)
+            catch (Exception e)
             {
-                
-                Console.WriteLine("Error: Not enough money");
+                throw new Exception(e.Message);
             }
         }
     }
