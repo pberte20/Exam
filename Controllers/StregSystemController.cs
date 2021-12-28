@@ -18,6 +18,7 @@ namespace Exam
             try
             {
                 ICommand command = _commandFactory.Parse(commandString);
+                Console.WriteLine(command.ToString());
                 command.Execute();
             }
             catch (Exception e)

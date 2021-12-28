@@ -17,19 +17,36 @@ namespace Exam
         {
             IEnumerable<string> commandParts = command.Split(' ');
             string FirstCommand = commandParts.First();
+            IList<string> Arguments = commandParts.Skip(1).ToList();
             switch (FirstCommand)
             {
                case ":q" or ":quit":
                 return new QuitCommand(_ui);
 
                 default:
-                return parseUserCommand(commandParts);
+                return parseUserCommand(FirstCommand, Arguments);
             }
             
         }
-        private ICommand parseUserCommand(IEnumerable<string> commandParts)
+        private ICommand parseUserCommand(string  FirstCommand, IList<string> Arguments )
         {
-            string FirstCommand = commandParts.First();
+           
+                User user = _stregSystem.GetUserByUserName(FirstCommand);
+                int id = int.Parse(Arguments[0]);
+                Product product = _stregSystem.GetProductById(id);
+                if (Arguments.Count() == 1)
+                {
+                    return new BuyCommand(_ui, _stregSystem, user, product);
+                }
+                else if (Arguments.Count() == 2)
+                {
+                    int amount = int.Parse(Arguments[1]);
+                    return new BuyCommand(_ui, _stregSystem, user, product, amount);
+                }
+                else
+                {
+                    throw new ArgumentException("Invalid number of arguments");
+                }
            
 
         }
