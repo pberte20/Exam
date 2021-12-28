@@ -58,6 +58,10 @@ namespace Exam
                 Console.WriteLine($"Product {product.Name} is not active");
             }
         }
+        public void DisplayProductIsActiveChanged(Product product, bool isActive)
+        {
+            Console.WriteLine($"Product {product.Name} is {(isActive ? "active" : "not active")}");
+        }
         private void DisplayProducts()
         {
             Console.WriteLine("Products:");
@@ -65,6 +69,14 @@ namespace Exam
             {
                 Console.WriteLine(product.ToString());
             }
+        }
+        public void DisplayCreditStatusChanged(Product product, bool isActive)
+        {
+            Console.WriteLine($"Credit status changed for product {product.Name} to {isActive}");
+        }
+        public void DisplayCashInserted(InsertCashTransaction transaction)
+        {
+            Console.WriteLine($"Cash inserted: {transaction.Amount} to account {transaction.User.UserName} current balance is {transaction.User.Balance}");
         }
         public void Start()
         {
@@ -74,6 +86,8 @@ namespace Exam
                 Console.WriteLine("Enter command:");
                 string command = Console.ReadLine();
                 CommandEntered?.Invoke(this, command);
+                Console.ReadLine();
+
             }
         }
         public void Close()

@@ -9,33 +9,40 @@ namespace Exam
         {
             _ui = ui;
             _stregSystem = stregSystem;
-            _adminCommands.Add("quit", _ui.Close);
         }
         private IStregSystemUI _ui;
         private StregSystem _stregSystem;
-        private Dictionary<string, Action> _adminCommands = new Dictionary<string, Action>();
-        private void GetDictionaryCommands()
-        {
-            _adminCommands.Add("quit", _ui.Close);
-          //  _adminCommands.Add("Activate",(_product) => _stregSystem.ChangeActiveStatus(_product, true));
-        }
 
         public ICommand Parse(string command)
         {
             IEnumerable<string> commandParts = command.Split(' ');
             string FirstCommand = commandParts.First();
+            char FirstCommandFirstLetter = FirstCommand.First();
             IList<string> Arguments = commandParts.Skip(1).ToList();
-            switch (FirstCommand)
+            if (FirstCommandFirstLetter == char.Parse(":"))
             {
-                case ":q" or ":quit":
-                    return new QuitCommand(_ui);
-                case ":activate":
-                    return  ParseActivateCommand(Arguments);
-                case ":deactivate":
-                    return ParseDeactivateCommand(Arguments);
-                default:
-                    return parseUserCommand(FirstCommand, Arguments);
-                
+                switch (FirstCommand)
+                {
+                    case ":q" or ":quit":
+                        return new QuitCommand(_ui);
+                    case ":activate":
+                        return  ParseActivateStatusCommand(Arguments, true);
+                    case ":deactivate":
+                        return ParseActivateStatusCommand(Arguments, false);
+                    case ":crediton":
+                        return ParseCreditStatusCommand(Arguments, true);
+                    case ":creditoff":
+                        return ParseCreditStatusCommand(Arguments, false);
+                    case ":addcredit":
+                        return ParseAddCreditCommand(Arguments);
+                    default:
+                        throw new ArgumentException("Invalid Admin command");
+                    
+                }
+            }
+            else
+            {
+                return parseUserCommand(FirstCommand, Arguments);
             }
             
         }
@@ -60,31 +67,45 @@ namespace Exam
                 }
 
         }
-        private ICommand ParseActivateCommand(IList<string> Arguments)
+        private ICommand ParseActivateStatusCommand(IList<string> Arguments, bool status)
         {
             if (Arguments.Count() == 1)
             {
                 int id = int.Parse(Arguments[0]);
                 Product product = _stregSystem.GetProductById(id);
-                return new ActivateCommand(_ui, _stregSystem, product);
+                return new ActivateStatusCommand(_ui, _stregSystem, product, status);
             }
             else
             {
                 throw new ArgumentException("Invalid number of arguments");
             }
         }
-        private ICommand ParseDeactivateCommand(IList<string> Arguments)
+        private ICommand ParseCreditStatusCommand(IList<string> Arguments, bool status)
         {
             if (Arguments.Count() == 1)
             {
                 int id = int.Parse(Arguments[0]);
                 Product product = _stregSystem.GetProductById(id);
-                return new DeactivateCommand(_ui, _stregSystem, product);
+                return new CreditStatusCommand(_ui,_stregSystem, product, status);
             }
             else
             {
                 throw new ArgumentException("Invalid number of arguments");
             }
         }
+        private ICommand ParseAddCreditCommand(IList<string> Arguments)
+        {
+            if (Arguments.Count() == 2)
+            {
+                User user = _stregSystem.GetUserByUserName(Arguments[0]);
+                int amount = int.Parse(Arguments[1]);
+                return new AddCreditCommand(_ui, _stregSystem, user, amount);
+            }
+            else
+            {
+                throw new ArgumentException("Invalid number of arguments");
+            }
+        }
+        
     }
 }

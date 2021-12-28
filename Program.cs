@@ -13,7 +13,7 @@
             IDataLoader<Product> productLoader = new ProductLoader();
             string DirectoryLocation = Directory.GetCurrentDirectory();
             List<User> users = 
-                userLoader.LoadData(File.ReadLines(Path.Combine(DirectoryLocation,@"Data\users.csv" )).Skip(1));
+                userLoader.LoadData(File.ReadLines(Path.Combine(Directory.GetCurrentDirectory(),@"Data\users.csv" )).Skip(1));
         
                 
             List<Product> products = 
@@ -22,7 +22,6 @@
             StregSystem stregSystem = new StregSystem(users, products);
             IEnumerable<Product> ActiveProducts = stregSystem.GetActiveProducts();
             StregSystemCLI stregSystemCLI = new StregSystemCLI(stregSystem);
-            Console.Clear();
             StregSystemController controller = new StregSystemController(stregSystemCLI, stregSystem);
             stregSystemCLI.Start();
          }

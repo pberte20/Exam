@@ -22,7 +22,7 @@ namespace Exam
             }
             else
             {
-                this.User.Balance -= this.Amount;
+                this.User.Balance -= this.Product.Price * this.Amount;
             }
         }
 

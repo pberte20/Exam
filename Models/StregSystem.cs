@@ -32,14 +32,14 @@ namespace Exam
         public BuyProductTransaction BuyProduct(Product product, User user, decimal amount)
         {
             BuyProductTransaction transaction = new BuyProductTransaction(product, user, amount);
-            transactionExecute(transaction);
+            TransactionExecute(transaction);
             return transaction;
         }
 
         public InsertCashTransaction InsertCash(decimal amount, User user)
         {
             InsertCashTransaction transaction = new InsertCashTransaction(amount, user);
-            transactionExecute(transaction);
+            TransactionExecute(transaction);
             return transaction;
         }
 
@@ -86,7 +86,7 @@ namespace Exam
         {
             return _products.Where(p => p.IsActive);
         }
-        private void transactionExecute(Transaction transaction)
+        private void TransactionExecute(Transaction transaction)
         {
             transaction.Execute();
             _transactions.Add(transaction);
@@ -94,6 +94,10 @@ namespace Exam
         public void ChangeActiveStatus(Product product, bool isActive)
         {
             product.IsActive = isActive;
+        }
+        public void ChangeCreditStatus(Product product, bool isCredit)
+        {
+            product.CanbeBoughtOnCredit = isCredit;
         }
     }
 }
