@@ -22,7 +22,7 @@ namespace Exam
                 {
                     IsActive = true;
                 }
-                var product = new Product(name, decimal.Parse(PriceString), IsActive);
+                var product = new Product(name, decimal.Parse(PriceString)/100, IsActive);
                 products.Add(product);
             }
             return products;

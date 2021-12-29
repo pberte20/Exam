@@ -20,11 +20,11 @@ namespace Exam
         }
         public void DisplayUserBuysProduct(BuyProductTransaction transaction)
         {
-            Console.WriteLine($"User {transaction.User.UserName} bought {transaction.Product.Name}");
+            Console.WriteLine($"User {transaction.User.UserName} bought {transaction.Product.Name} for {transaction.Product.Price} and has {transaction.User.Balance} left");
         }
         public void DisplayUserBuysProduct(int count, BuyProductTransaction transaction)
         {
-            Console.WriteLine($"User {transaction.User.UserName} bought {count} {transaction.Product.Name}");
+            Console.WriteLine($"User {transaction.User.UserName} bought {count} {transaction.Product.Name} for {count * transaction.Product.Price} and has {transaction.User.Balance} left");
         }
         public void DisplayAdminCommandNotFoundMessage(string adminCommand)
         {
@@ -78,6 +78,10 @@ namespace Exam
         {
             Console.WriteLine($"Cash inserted: {transaction.Amount} to account {transaction.User.UserName} current balance is {transaction.User.Balance}");
         }
+        public void DisplayBalanceUnderTresholdWarning(User user)
+        {
+            Console.WriteLine($"Balance under treshold for user {user.UserName}");
+        }
         public void Start()
         {
             while (_running)
@@ -87,7 +91,6 @@ namespace Exam
                 string command = Console.ReadLine();
                 CommandEntered?.Invoke(this, command);
                 Console.ReadLine();
-
             }
         }
         public void Close()

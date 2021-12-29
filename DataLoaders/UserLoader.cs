@@ -15,8 +15,8 @@ namespace Exam
                 string UserNameString = parts[3];
                 string BalanceString = parts[4];
                 string EmailString = parts[5];
-                
-                User user = new User(FirstNameString, LastNameString, UserNameString, EmailString, decimal.Parse(BalanceString));
+
+                User user = new User(FirstNameString, LastNameString, UserNameString, EmailString, decimal.Parse(BalanceString)/100);
                 users.Add(user);
 
                 

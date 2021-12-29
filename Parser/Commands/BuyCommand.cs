@@ -31,7 +31,15 @@ namespace Exam
             try
             {
                 BuyProductTransaction transaction = _stregSystem.BuyProduct(_product, _user, _amount);
+                if (_amount == 1)
+                {
                 _ui.DisplayUserBuysProduct(transaction);
+                }
+                else
+                {
+                    _ui.DisplayUserBuysProduct(_amount, transaction);
+                }
+                
             }
             catch (Exception e)
             {
