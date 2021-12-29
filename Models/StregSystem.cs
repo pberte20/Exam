@@ -1,13 +1,21 @@
-namespace Exam
+using StregSystem.Exceptions;
+using StregSystem.Loggers;
+using StregSystem.Model.DataLoaders;
+using StregSystem.Model.Products;
+using StregSystem.Model.Transactions;
+using StregSystem.Model.Users;
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Transactions;
+
+namespace StregSystem.Model.StregSystem
 {
-    using System;
-    using System.Collections.Generic;
-    using System.IO;
-    using System.Linq;
-    public class StregSystem
+    public class StregSystemModel
     {
     
-        private List<Transaction> _transactions;
+        private List<BaseTransaction> _transactions;
         private List<Product> _products;
         private List<User> _users;
         public IEnumerable<Product> ActiveProducts
@@ -20,7 +28,7 @@ namespace Exam
         private TransactionLogger _transactionLogger;
         public event EventHandler<User> UserBalanceBelowTreshold;
 
-        public StregSystem()
+        public StregSystemModel()
         {
             IDataLoader<User> userLoader = new UserLoader();
             IDataLoader<Product> productLoader = new ProductLoader();
@@ -30,7 +38,7 @@ namespace Exam
                 
             _products = 
                 productLoader.LoadData(File.ReadLines(Path.Combine(Directory.GetCurrentDirectory(),@"Data\products.csv" )).Skip(1));
-            _transactions = new List<Transaction>();
+            _transactions = new List<BaseTransaction>();
             foreach (User user in _users)
             {
                 user.UserBalanceBelowTreshold += OnUserBalanceBelowTreshold;
@@ -88,7 +96,7 @@ namespace Exam
                 throw new UserNotFoundException();
             }
         }
-        public IEnumerable<Transaction> GetTransactions (User user, int count)
+        public IEnumerable<BaseTransaction> GetTransactions (User user, int count)
         {
             return _transactions.Where(t => t.User == user).Take(count);
         }
@@ -97,10 +105,10 @@ namespace Exam
         {
             return _products.Where(p => p.IsActive);
         }
-        private void TransactionExecute(Transaction transaction)
+        private void TransactionExecute(BaseTransaction Basetransaction)
         {
-            transaction.Execute();
-            _transactions.Add(transaction);
+            Basetransaction.Execute();
+            _transactions.Add(Basetransaction);
         }
         public void ChangeActiveStatus(Product product, bool isActive)
         {

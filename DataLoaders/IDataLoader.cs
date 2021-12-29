@@ -1,4 +1,4 @@
-namespace Exam
+namespace StregSystem.Model.DataLoaders
 {
     using System.Collections.Generic;
     public interface IDataLoader<T>

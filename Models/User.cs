@@ -1,8 +1,7 @@
-namespace Exam
+using System.Text.RegularExpressions;
+using System;
+namespace StregSystem.Model.Users
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Text.RegularExpressions;
        public class User:IComparable<User>
     {
 

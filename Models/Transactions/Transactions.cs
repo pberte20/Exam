@@ -1,9 +1,11 @@
-namespace Exam
+using System;
+using StregSystem.Model.Users;
+namespace StregSystem.Model.Transactions
 {  
-    using System;
-    public abstract class Transaction
+
+    public abstract class BaseTransaction
         {
-        public Transaction(decimal amount, User user)
+        public BaseTransaction(decimal amount, User user)
             {
                 this.Id = IdCounter++;
                 this.User = user;

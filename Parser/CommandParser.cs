@@ -1,16 +1,18 @@
-namespace Exam
+using StregSystem.Model.StregSystem;
+using StregSystem.UI;
+
+namespace StregSystem.Parser
 {
-    using System;
 
     class CommandParser
     {
-        public CommandParser(StregSystem stregSystem, IStregSystemUI ui)
+        public CommandParser(StregSystemModel stregSystem, IStregSystemUI ui)
         {
             _stregSystem = stregSystem;
             _ui = ui;
         }
 
-        private StregSystem _stregSystem;
+        private StregSystemModel _stregSystem;
         private IStregSystemUI _ui;
 
     }

@@ -1,7 +1,9 @@
-namespace Exam
+using System;
+using StregSystem.Model.Users;
+namespace StregSystem.Model.Transactions
 {
-    using System;
-    public class InsertCashTransaction : Transaction
+
+    public class InsertCashTransaction : BaseTransaction
     {
         public InsertCashTransaction(decimal amount, User user) 
         : base(amount, user)

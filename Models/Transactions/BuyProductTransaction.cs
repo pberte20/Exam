@@ -1,7 +1,11 @@
-namespace Exam
+using System;
+using StregSystem.Exceptions;
+using StregSystem.Model.Products;
+using StregSystem.Model.Users;
+namespace StregSystem.Model.Transactions
 {
-    using System;
-    public class BuyProductTransaction : Transaction
+
+    public class BuyProductTransaction : BaseTransaction
     {
         public BuyProductTransaction(Product product, User user, decimal amount)
             : base(amount, user)

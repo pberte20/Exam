@@ -1,6 +1,9 @@
-namespace Exam
+using System;
+using StregSystem.Model.Products;
+using StregSystem.Model.Users;
+
+namespace StregSystem.Exceptions
 {
-    using System;
     [Serializable]
     class InsufficientCreditsException : Exception
     {

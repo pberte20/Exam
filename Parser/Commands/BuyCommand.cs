@@ -1,15 +1,21 @@
-namespace Exam
+using System;
+using StregSystem.Model.Products;
+using StregSystem.Model.Transactions;
+using StregSystem.Model.Users;
+using StregSystem.Model.StregSystem;
+using StregSystem.UI;
+namespace StregSystem.Parser.Commands
 {
-    using System;
+
     public class BuyCommand : ICommand
     {
         private IStregSystemUI _ui;
-        private StregSystem _stregSystem;
+        private StregSystemModel _stregSystem;
         private User _user;
         private Product _product;
         private int _amount;
 
-        public BuyCommand(IStregSystemUI ui, StregSystem stregSystem, User user, Product product, int amount)
+        public BuyCommand(IStregSystemUI ui, StregSystemModel stregSystem, User user, Product product, int amount)
         {
             _ui = ui;
             _stregSystem = stregSystem;
@@ -17,7 +23,7 @@ namespace Exam
             _product = product;
             _amount = amount;
         }
-        public BuyCommand(IStregSystemUI ui, StregSystem stregSystem, User user, Product product)
+        public BuyCommand(IStregSystemUI ui, StregSystemModel stregSystem, User user, Product product)
         {
             _ui = ui;
             _stregSystem = stregSystem;

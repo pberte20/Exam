@@ -1,6 +1,8 @@
-namespace Exam
+using System.Collections.Generic;
+using StregSystem.Model.Products;
+
+namespace StregSystem.Model.DataLoaders
 {
-    using System.Collections.Generic;
 
     public class ProductLoader : IDataLoader<Product>
     {

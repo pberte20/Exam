@@ -1,6 +1,8 @@
-namespace Exam
+using System;
+using StregSystem.Model.Products;
+
+namespace StregSystem.Exceptions
 {
-    using System;
     public class ProductNotActiveException : Exception
     {
         public ProductNotActiveException()

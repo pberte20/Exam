@@ -1,12 +1,15 @@
-namespace Exam
+using System;
+using StregSystem.Model.StregSystem;
+using StregSystem.Parser.Commands;
+using StregSystem.UI;
+namespace StregSystem.Controllers
 {
-    using System;
 
     internal class StregSystemController
     {
         private IStregSystemUI _ui;
         private CommandFactory _commandFactory;
-        public StregSystemController(IStregSystemUI ui, StregSystem stregSystem)
+        public StregSystemController(IStregSystemUI ui, StregSystemModel stregSystem)
         {
             _ui = ui;
             _commandFactory = new CommandFactory(ui, stregSystem);

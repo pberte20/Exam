@@ -1,11 +1,13 @@
-namespace Exam
-{
-    using System;
-    using System.Collections.Generic;
+using StregSystem.UI;
+using StregSystem.Model.Products;
+using StregSystem.Exceptions;
+using StregSystem.Model.StregSystem;
 
+namespace StregSystem.Parser.Commands
+{
     public class ActivateStatusCommand : ICommand
     {
-        public ActivateStatusCommand(IStregSystemUI ui, StregSystem stregSystem, Product product, bool status)
+        public ActivateStatusCommand(IStregSystemUI ui, StregSystemModel stregSystem, Product product, bool status)
         {
             _ui = ui;
             _product = product;
@@ -13,7 +15,7 @@ namespace Exam
             _stregSystem = stregSystem;
         }
         private IStregSystemUI _ui;
-        private StregSystem _stregSystem;
+        private StregSystemModel _stregSystem;
         private Product _product;
         private bool _status;
         

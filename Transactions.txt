@@ -1,3 +1,4 @@
 Transaction Log
-ID 1: ndavo bought 1 "½L vand & kildevand excl. pant" for 12 at 29-12-2021 02:36:56
-ID 2: ndavo inserted 10 at 29-12-2021 02:37:08
+ID 2: ndavo bought 1 "½L vand & kildevand excl. pant" for 12 at 29-12-2021 04:08:55
+ID 4: ndavo inserted 10 at 29-12-2021 04:09:11
+ID 5: ndavo inserted 10 at 29-12-2021 04:09:20

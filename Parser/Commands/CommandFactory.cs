@@ -1,17 +1,22 @@
-namespace Exam
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using StregSystem.Model.Products;
+using StregSystem.Model.StregSystem;
+using StregSystem.Model.Users;
+using StregSystem.UI;
+
+namespace StregSystem.Parser.Commands
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
     public class CommandFactory
     {   
-        public CommandFactory(IStregSystemUI ui, StregSystem stregSystem)
+        public CommandFactory(IStregSystemUI ui, StregSystemModel stregSystem)
         {
             _ui = ui;
             _stregSystem = stregSystem;
         }
         private IStregSystemUI _ui;
-        private StregSystem _stregSystem;
+        private StregSystemModel _stregSystem;
 
         public ICommand Parse(string command)
         {

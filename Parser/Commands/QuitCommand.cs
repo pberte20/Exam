@@ -1,4 +1,6 @@
-namespace Exam
+using StregSystem.UI;
+
+namespace StregSystem.Parser.Commands
 {
     public class QuitCommand : ICommand
     {

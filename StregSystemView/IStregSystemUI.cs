@@ -1,6 +1,10 @@
-namespace Exam
+using System;
+using StregSystem.Model.Products;
+using StregSystem.Model.Transactions;
+using StregSystem.Model.Users;
+
+namespace StregSystem.UI
 {
-    using System;
     public interface IStregSystemUI
     {
     void DisplayUserNotFound(User user);

@@ -1,4 +1,4 @@
-namespace Exam
+namespace StregSystem.Exceptions
 {
     using System;
 

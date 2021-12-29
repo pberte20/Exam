@@ -1,12 +1,17 @@
-namespace Exam
+using System;
+using StregSystem.Model.Products;
+using StregSystem.Model.StregSystem;
+using StregSystem.Model.Transactions;
+using StregSystem.Model.Users;
+
+namespace StregSystem.UI
 {
-    using System;
     public class StregSystemCLI : IStregSystemUI
     {
         public event EventHandler<string> CommandEntered;
         private bool _running = true;
-        private StregSystem _stregSystem;
-        public StregSystemCLI(StregSystem stregSystem)
+        private StregSystemModel _stregSystem;
+        public StregSystemCLI(StregSystemModel stregSystem)
         {
             _stregSystem = stregSystem;
         }

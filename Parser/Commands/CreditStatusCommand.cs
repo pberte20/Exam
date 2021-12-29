@@ -1,12 +1,16 @@
-namespace Exam
+using StregSystem.Model.Products;
+using StregSystem.Model.StregSystem;
+using StregSystem.UI;
+
+namespace StregSystem.Parser.Commands
 {
     public class CreditStatusCommand : ICommand
     {
         private IStregSystemUI _ui;
         private Product _product;
-        private StregSystem _stregSystem;
+        private StregSystemModel _stregSystem;
         private bool _status;
-        public CreditStatusCommand(IStregSystemUI ui,StregSystem stregSystem, Product product, bool Status)
+        public CreditStatusCommand(IStregSystemUI ui,StregSystemModel stregSystem, Product product, bool Status)
         {
             _ui = ui;
             _product = product;

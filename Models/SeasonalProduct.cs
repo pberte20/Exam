@@ -1,4 +1,4 @@
-namespace Exam
+namespace StregSystem.Model.Products
 {
     using System;
     class SeasonalProduct : Product

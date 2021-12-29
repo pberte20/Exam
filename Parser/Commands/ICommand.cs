@@ -1,4 +1,4 @@
-namespace Exam
+namespace StregSystem.Parser.Commands
 {
     public interface ICommand
     {
