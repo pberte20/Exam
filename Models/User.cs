@@ -113,7 +113,6 @@ namespace Exam
             }
         }
         private decimal balance;
-        //TODO implement delegate
         public delegate string UserBalanceNotification(User user, decimal balance);
     
         public override string ToString()
