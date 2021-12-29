@@ -29,12 +29,12 @@ namespace Exam
         }
         private void User_UserBalanceBelowTreshold(object sender, EventArgs e)
         {
-            Console.WriteLine("User balance below treshold");
+            Console.WriteLine("Balance below treshold");
         }
 
         public override string ToString()
         {
-            return $"{this.Product.Name} {this.Amount} {this.Date}";
+            return $"ID {this.Id}: {this.User.UserName} bought {this.Amount} {this.Product.Name} for {this._totalPrice} at {this.Date}";
         }
         public Product Product { get; set; }
         private decimal _totalPrice;

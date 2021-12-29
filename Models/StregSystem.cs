@@ -2,6 +2,7 @@ namespace Exam
 {
     using System;
     using System.Collections.Generic;
+    using System.IO;
     using System.Linq;
     public class StregSystem
     {
@@ -16,23 +17,32 @@ namespace Exam
                 return _products.Where(p => p.IsActive).ToList();
             }
         }
+        private TransactionLogger _transactionLogger;
         public event EventHandler<User> UserBalanceBelowTreshold;
 
-        public StregSystem(List<User> users, List<Product> products)
+        public StregSystem()
         {
-            _products = products;
-            _users = users;
+            IDataLoader<User> userLoader = new UserLoader();
+            IDataLoader<Product> productLoader = new ProductLoader();
+            _users = 
+                userLoader.LoadData(File.ReadLines(Path.Combine(Directory.GetCurrentDirectory(),@"Data\users.csv" )).Skip(1));
+        
+                
+            _products = 
+                productLoader.LoadData(File.ReadLines(Path.Combine(Directory.GetCurrentDirectory(),@"Data\products.csv" )).Skip(1));
             _transactions = new List<Transaction>();
-            foreach (User user in users)
+            foreach (User user in _users)
             {
                 user.UserBalanceBelowTreshold += OnUserBalanceBelowTreshold;
             }
+            _transactionLogger = new TransactionLogger();
         }
         
         public BuyProductTransaction BuyProduct(Product product, User user, decimal amount)
         {
             BuyProductTransaction transaction = new BuyProductTransaction(product, user, amount);
             TransactionExecute(transaction);
+            _transactionLogger.Log(transaction);
             return transaction;
         }
 
@@ -40,6 +50,7 @@ namespace Exam
         {
             InsertCashTransaction transaction = new InsertCashTransaction(amount, user);
             TransactionExecute(transaction);
+            _transactionLogger.Log(transaction);
             return transaction;
         }
 

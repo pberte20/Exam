@@ -90,7 +90,11 @@ namespace Exam
                 Console.WriteLine("Enter command:");
                 string command = Console.ReadLine();
                 CommandEntered?.Invoke(this, command);
-                Console.ReadLine();
+                if(command != ":q" || command != ":quit")
+                {
+                    Console.WriteLine("Press enter to continue");
+                    Console.ReadLine();
+                }
             }
         }
         public void Close()
